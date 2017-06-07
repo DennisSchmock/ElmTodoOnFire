@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Elm ToDO with Ports and firebase</title>
+  </head>
+  <body>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-messaging.js"></script>
+    <script type="text/javascript" src="elm.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBqvi-TX20Lk5hLgxw0miknqWdntiEtv6g",
+    authDomain: "itemlist-84222.firebaseapp.com",
+    databaseURL: "https://itemlist-84222.firebaseio.com",
+    projectId: "itemlist-84222",
+    storageBucket: "itemlist-84222.appspot.com",
+    messagingSenderId: "530107007231"
+  };
+
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  var ref = database.ref("todos");
+
+      var app = Elm.Main.fullscreen();
+      var currentModel = localStorage.getItem("todos");
+      app.ports.storageInput.send(JSON.parse(currentModel));
+      app.ports.storage.subscribe(function(data){
+        ref.update(data);
+
+      });
+
+      ref.on('value',function(snapshot){
+        console.log(JSON.stringify(snapshot.val()));
+        app.ports.storageInput.send(snapshot.val());
+
+      })
+      window.app = app;
+    </script>
+  </body>
+</html>
