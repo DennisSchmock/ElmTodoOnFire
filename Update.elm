@@ -46,11 +46,14 @@ update msg model =
         newModel = { model | todo = updatedTodo}
       in
         (newModel, Cmd.none)
+
+
     Filter filterState ->
       let
         newModel =
         {model | filter = filterState}
       in (newModel , sendToStorage newModel)
+
 
     Clear ->
       let newModel =

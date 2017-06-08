@@ -28,7 +28,6 @@
 
       var app = Elm.Main.fullscreen();
       var currentModel = localStorage.getItem("todos");
-      app.ports.storageInput.send(JSON.parse(currentModel));
       app.ports.storage.subscribe(function(data){
         ref.update(data);
 

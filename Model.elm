@@ -5,15 +5,11 @@ import Types exposing (..)
 
 initialModel : Model
 initialModel =
-  { todos = [{ title = "The first todo"
-    , completed = False
-    , editing = False
-    , identifier = 1
-    }
+  { todos = [
   ]
-  , todo = {newTodo | identifier = 2}
+  , todo = {newTodo | identifier = 1}
   , filter = All
-  , nextIdentifier = 3
+  , nextIdentifier = 2
   }
 
 newTodo : Todo

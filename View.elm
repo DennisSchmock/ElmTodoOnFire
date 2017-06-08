@@ -93,9 +93,7 @@ filterItemView model filterState =
 
 styles : String
 styles =
-  -- I'll read the styles into this heredoc with the following in vim:
-  -- :r https://raw.githubusercontent.com/tastejs/todomvc-app-css/master/index.css
-  -- You can just copy/paste them into the heredoc if you prefer.
+
 
   """
 html,
